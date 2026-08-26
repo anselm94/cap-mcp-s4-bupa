@@ -1,8 +1,11 @@
 using {OP_API_BUSINESS_PARTNER_SRV as S4BP} from './external/OP_API_BUSINESS_PARTNER_SRV';
 
 @mcp
-@path: '/mcp/business-partner'
-service BusinessPartnerService {
+@path: '/mcp/customer'
+/**
+ * Retrieve Customer details and addresses from the S/4HANA system who are categorized as 'Person'
+ */
+service CustomerService {
     entity Customers         as
         projection on S4BP.A_BusinessPartner {
             BusinessPartner           as ID,
@@ -12,7 +15,9 @@ service BusinessPartnerService {
 
             /* Associations */
             to_BusinessPartnerAddress as address : redirected to CustomerAddresses,
-        };
+        }
+        where
+            BusinessPartnerCategory == '1'; // '1' = Person;
 
     entity CustomerAddresses as
         projection on S4BP.A_BusinessPartnerAddress {

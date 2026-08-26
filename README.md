@@ -22,7 +22,7 @@ This project is an CAP-based MCP server that provides a subset of the S/4HANA Bu
    npm start
    ```
 
-4. Access the MCP server at `http://localhost:4005/mcp/business-partner` (or the port specified in the `.env` file). By default, no authentication is required.
+4. Access the MCP server at `http://localhost:4005/mcp/customer` (or the port specified in the `.env` file). By default, no authentication is required.
 
 ## Entities Exposed
 
